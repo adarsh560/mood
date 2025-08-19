@@ -5,7 +5,9 @@ const prisma = new PrismaClient()
 async function main() {
   console.log('Fast seeding 500 tasks each...')
   
-  // Clear existing tasks
+  // Clear existing logs first, then tasks
+  await prisma.log.deleteMany({})
+  console.log('Cleared existing logs')
   await prisma.task.deleteMany({})
   console.log('Cleared existing tasks')
   
@@ -44,6 +46,28 @@ async function main() {
     "Audio submissive moaning while being used", "Describe velvet ownership marked by daddy", "Send velvet kitchen photo bent over counter", "Video of velvet cooking naked for daddy's pleasure",
     "Voice note punishment request spank my velvet", "Text velvet discipline need daddy to control me", "Photo of velvet marks from rough play", "Video of velvet spanking self until red",
     "Audio crying for nunu please fill me up", "Describe velvet desperation empty without nunu", "Send velvet office photo risky workplace tease", "Video of velvet work tease under desk fingering",
+    
+    // Tasks for him (40%)
+    "Send me a photo of your hard nunu throbbing", "Video call while stroking your nunu for me", "Voice message moaning my name while jerking", "Text me how much you want to fill my velvet",
+    "Show me your nunu leaking precum", "Record yourself saying I own your nunu", "Send nunu close-up photo rock hard", "Video of you stroking nunu until you cum",
+    "Voice note of you cumming hard for me", "Text describing how tight my velvet feels", "Photo of your nunu ready to explode", "Video of nunu jerking until you shoot",
+    "Audio of you begging to fuck my velvet", "Describe your nunu aching to be inside me", "Send nunu precum dripping photo", "Video call masturbation show until orgasm",
+    "Voice message dirty talk about dominating me", "Text your nunu fantasies owning my velvet", "Photo of nunu covered in your cum", "Video of you humping pillow thinking of velvet",
+    "Audio of nunu slapping sounds while stroking", "Describe wanting to pound my velvet hard", "Send nunu mirror selfie fully erect", "Video of nunu twitching before cumming",
+    "Voice note saying you're my good boy", "Text about nunu throbbing for velvet", "Photo of nunu from below looking up", "Video call strip show ending with nunu out",
+    "Audio moaning please let me fuck velvet", "Describe nunu pulsing thinking of my mouth", "Send nunu bathroom photo standing proud", "Video of nunu toy play deep stroking",
+    "Voice message begging to cum inside velvet", "Text nunu worship I live for your velvet", "Photo of nunu in tight underwear bulging", "Video of nunu licking your own precum",
+    "Audio of you saying velvet owns my nunu", "Describe nunu desperate to release", "Send nunu bed photo ready for action", "Video call naked show touching your nunu",
+    "Voice note dirty confession about nunu needs", "Text nunu submission I'm your fuck toy", "Photo of nunu peek through boxers", "Video of nunu teasing with slow strokes",
+    "Audio saying mommy I need your velvet now", "Describe nunu craving to explode inside", "Send nunu shower photo water running down", "Video of nunu grinding against bathroom counter",
+    "Voice message cum countdown while stroking", "Text nunu devotion you own my body", "Photo of nunu glistening after orgasm", "Video call orgasm show with loud moaning",
+    "Audio of nunu worship praising mommy's velvet", "Describe velvet hunger I need to taste it", "Send nunu morning photo ready for fucking", "Video of nunu stretching and growing hard",
+    "Voice note saying good boy loves mommy's velvet", "Text nunu obedience I do whatever mommy wants", "Photo of nunu night shot ready for dreams", "Video of nunu dancing naked for mommy",
+    "Audio begging for permission to cum hard", "Describe nunu belonging completely to mommy", "Send nunu car photo risky public bulge", "Video of nunu public tease under pants",
+    "Voice message role play nunu is mommy's property", "Text nunu slave talk use me however", "Photo of nunu outdoor nature fucking fantasy", "Video call domination show mommy controlling nunu",
+    "Audio dominant moaning while being in control", "Describe nunu ownership marked by mommy", "Send nunu kitchen photo bent over counter", "Video of nunu cooking naked for mommy's pleasure",
+    "Voice note punishment request spank my nunu", "Text nunu discipline need mommy to control me", "Photo of nunu marks from rough play", "Video of nunu spanking self until red",
+    "Audio crying for velvet please let me in", "Describe nunu desperation empty without velvet", "Send nunu office photo risky workplace bulge", "Video of nunu work tease under desk stroking",
     "Voice message edge play", "Text velvet denial", "Photo of velvet frustrated", "Video call edging session",
     "Audio begging to cum", "Describe velvet torture", "Send velvet tied photo", "Video of velvet bondage",
     "Voice note safe word", "Text velvet limits", "Photo of velvet rope marks", "Video of velvet restraints",
@@ -260,6 +284,20 @@ async function main() {
     "Spanking during pause", "Hair pulling during rewind", "Choking during climax scene", "Biting during kissing scene",
     "Velvet rubbing during car chase", "Nunu teasing during dialogue", "Slow grinding during slow scene", "Fast fucking during action",
     "Silent sex during quiet movie", "Loud moaning during loud scene", "Synchronized orgasm with movie climax", "Edge play during suspense",
+    
+    // For him (40%)
+    "Nunu stroking while watching movie", "Velvet eating during Netflix", "Nunu jerking at theater", "Velvet licking during series",
+    "Pounding while watching TV", "Velvet worship during documentary", "Nunu domination during commercial", "Groping during film",
+    "Aggressive kissing at cinema", "Velvet claiming during show", "Nunu control during movie", "Dominating during anime",
+    "Nunu power during horror movie", "Velvet domination during romance", "Rough pounding during action film", "Hard fucking during comedy",
+    "Velvet pounding during thriller", "Nunu control during drama", "Dominant spooning during documentary", "Power standing during news",
+    "Velvet bending during cooking show", "Nunu against wall during sports", "Dominating couch during sitcom", "Power floor sex during music video",
+    "Nunu bathroom dominance during movie break", "Velvet kitchen control during commercial", "Bedroom domination during late night show", "Living room power during morning news",
+    "Nunu commanding during cartoon", "Velvet controlling during reality TV", "Power 69 during game show", "Dominant masturbation during talk show",
+    "Nunu commanding velvet during weather", "Velvet stroking nunu during commercial", "Chest worship during movie trailer", "Nunu grabbing during credits",
+    "Velvet spanking during pause", "Nunu hair pulling during rewind", "Dominant choking during climax scene", "Power biting during kissing scene",
+    "Nunu controlling during car chase", "Velvet teasing nunu during dialogue", "Power grinding during slow scene", "Dominant fucking during action",
+    "Commanding sex during quiet movie", "Power moaning during loud scene", "Nunu synchronized orgasm with movie climax", "Dominant edge play during suspense",
     "Bondage play during thriller", "Roleplay matching movie characters", "Costume sex matching movie theme", "Position matching movie scene",
     "Multiple rounds during long movie", "Quickie during short film", "Marathon sex during movie marathon", "Intermission play during break",
     "Popcorn body play", "Ice cube play during hot scene", "Whipped cream during dessert scene", "Chocolate play during romantic scene",
