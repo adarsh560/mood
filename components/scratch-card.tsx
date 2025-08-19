@@ -102,23 +102,26 @@ export default function ScratchCardComponent({ task, onComplete }: ScratchCardCo
 
   const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
     e.preventDefault()
+    e.stopPropagation()
     setIsDrawing(true)
     scratch(e)
   }
 
   const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
     e.preventDefault()
+    e.stopPropagation()
     if (isDrawing) scratch(e)
   }
 
   const handleTouchEnd = (e: React.TouchEvent<HTMLCanvasElement>) => {
     e.preventDefault()
+    e.stopPropagation()
     setIsDrawing(false)
   }
 
   return (
-    <div className="flex justify-center items-center min-h-[400px] px-4">
-      <Card className="w-full max-w-sm h-96 overflow-hidden relative bg-gray-800 border-gray-700">
+    <div className="flex justify-center items-center min-h-[400px] px-4" style={{ touchAction: 'pan-y' }}>
+      <Card className="w-full max-w-sm h-96 overflow-hidden relative bg-gray-800 border-gray-700" style={{ touchAction: 'none' }}>
         <CardContent className="p-4 sm:p-6 h-full flex flex-col items-center justify-center bg-gradient-to-br from-pink-500 to-purple-600 text-white">
           <h2 className="text-lg sm:text-xl font-bold text-center mb-2 sm:mb-3">{task.title}</h2>
           <p className="text-xs sm:text-sm text-center text-white/90 leading-relaxed px-2">
@@ -129,7 +132,7 @@ export default function ScratchCardComponent({ task, onComplete }: ScratchCardCo
         {!isScratched && (
           <canvas
             ref={canvasRef}
-            className="absolute top-0 left-0 w-full h-full cursor-pointer"
+            className="absolute top-0 left-0 w-full h-full cursor-pointer touch-none"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -137,6 +140,7 @@ export default function ScratchCardComponent({ task, onComplete }: ScratchCardCo
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
+            style={{ touchAction: 'none' }}
           />
         )}
       </Card>
