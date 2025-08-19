@@ -392,12 +392,36 @@ async function main() {
     "Nightfall during end scene", "Daybreak during beginning scene", "Nightfall during conclusion scene", "Eternal during forever scene"
   ]
   
+  // Descriptions for him (dominant)
+  const himDescriptions = [
+    "Don't worry I will fuck u hardest mommy", "Hm bhaut chodenge aapko babes hum iske liye bhaut wait kiye hai", "I'm gonna pound your velvet so hard you'll scream", "Get ready mommy I'm gonna destroy your velvet tonight",
+    "Tumhari chut ko itna chodunga ki tum bhul jaogi sab kuch", "I will make you my personal fuck toy tonight", "Your velvet belongs to me and I'll use it however I want", "Meri jaan tumhe itna satisfy karunga ki tum pagal ho jaogi",
+    "I'm gonna fill your velvet with my nunu until you can't take anymore", "Tonight I'm gonna show you what real fucking feels like", "Tumhari velvet ko itna tease karunga ki tum beg karogi", "I will make you cum so hard you'll forget your own name",
+    "Get ready for the hardest pounding of your life mommy", "Aaj tumhe pata chalega ki main kitna rough ho sakta hun", "I'm gonna use every hole you have until you're completely mine", "Your body is my playground and I'm gonna explore every inch",
+    "Tumhari chut meri hai aur main iske saath jo chahunga karunga", "I will fuck you so good you'll be addicted to my nunu", "Tonight you're gonna be my dirty little slut", "Main tumhe itna hard chodunga ki tum walk nahi kar paogi",
+    "Your velvet is gonna be so sore from my nunu", "I'm gonna make you my personal cum dump tonight", "Tumhe pata chal jayega ki daddy kitna powerful hai", "I will stretch your velvet with my thick nunu", "Get ready to be completely dominated by your daddy"
+  ]
+  
+  // Descriptions for her (submissive/demanding)
+  const herDescriptions = [
+    "Chut khaa lo meri", "Fuck me hard daddy", "Fuck me like I am ur sex toy daddy", "Meri velvet ko itna chodo ki main pagal ho jaun",
+    "Use me however you want daddy I'm all yours", "Main tumhari randi hun daddy jo chahe karo", "Destroy my velvet with your big nunu daddy", "I want you to pound me until I can't think straight",
+    "Meri chut tumhari hai daddy iske saath khelna", "Make me your dirty little whore tonight", "I need your nunu inside my velvet right now", "Daddy please fuck me harder than ever before",
+    "Main tumhari personal fuck doll hun use me", "Stretch my tight velvet with your thick nunu", "I want to be completely owned by you daddy", "Meri velvet ko tumhare nunu se bhar do",
+    "Make me scream your name while you fuck me", "I'm your little slut daddy do whatever you want", "Tumhara nunu meri velvet mein fit perfect hota hai", "Fuck me so hard I forget everything else",
+    "Main tumhari property hun daddy claim me", "Use my body for your pleasure I live for it", "Daddy meri velvet tumhare bina incomplete hai", "I want to be your personal cum bucket", "Make me your obedient little fuck toy daddy"
+  ]
+  
   for (let i = 0; i < 500; i++) {
     const scenario = scenarios[i % scenarios.length]
+    const isForHim = i % 5 < 2 // 40% for him (2 out of 5)
+    const descriptions = isForHim ? himDescriptions : herDescriptions
+    const description = descriptions[i % descriptions.length]
+    
     realTasks.push({
       type: 'real',
       title: `${scenario} ${Math.floor(i/scenarios.length) + 1}`,
-      description: `${scenario} - Enjoy intimate moments while being entertained. Stay quiet and discreet.`,
+      description: `${scenario} - ${description}`,
       dayOffset: i,
       imageUrl: `/images/real/r${i + 1}.jpg`
     })
