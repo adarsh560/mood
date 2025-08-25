@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import ScratchCardComponent from '@/components/scratch-card'
-import { ArrowLeft, RotateCcw } from 'lucide-react'
+import { ArrowLeft, RotateCcw, Heart, Sparkles, CheckCircle, Clock } from 'lucide-react'
 import Link from 'next/link'
-import { getCurrentDayOffset } from '@/lib/utils'
 
 interface Task {
   id: number
@@ -66,10 +66,14 @@ export default function RealDaysPage() {
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-center items-center min-h-[400px]">
+        <div className="flex justify-center items-center min-h-[500px]">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 mx-auto mb-4"></div>
-            <p className="text-gray-300">Loading today's intimate adventure...</p>
+            <div className="relative">
+              <div className="w-16 h-16 border-4 border-pink-600/30 border-t-pink-600 rounded-full animate-spin mx-auto mb-6"></div>
+              <Heart className="w-6 h-6 text-pink-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Preparing Your Intimate Adventure</h3>
+            <p className="text-gray-300">Creating something passionate just for you...</p>
           </div>
         </div>
       </div>
@@ -78,28 +82,59 @@ export default function RealDaysPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-8">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-12">
         <Link href="/">
-          <Button variant="outline">
+          <Button variant="outline" className="glass-card border-white/20 hover:border-white/40 text-white hover:text-white hover:bg-white/10">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back Home
           </Button>
         </Link>
-        <h1 className="text-3xl font-bold text-pink-400">Real Days</h1>
-        <Button variant="outline" onClick={() => window.location.reload()}>
+        
+        <div className="text-center">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-700 rounded-xl flex items-center justify-center">
+              <Heart className="w-5 h-5 text-white" />
+            </div>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent">
+              Real Days
+            </h1>
+          </div>
+          <p className="text-gray-400 text-sm">Physical intimacy & connection</p>
+        </div>
+        
+        <Button variant="outline" onClick={() => window.location.reload()} className="glass-card border-white/20 hover:border-white/40 text-white hover:text-white hover:bg-white/10">
           <RotateCcw className="w-4 h-4 mr-2" />
           Refresh
         </Button>
       </div>
 
-      <div className="text-center mb-8">
-        <p className="text-lg text-gray-300">
-          {isCompleted 
-            ? "Position explored! Come back tomorrow for a new adventure 💖" 
-            : "Scratch the card below to reveal today's intimate position"}
-        </p>
+      {/* Status Message */}
+      <div className="text-center mb-12">
+        {isCompleted ? (
+          <Card className="glass-card border-green-500/30 max-w-md mx-auto">
+            <CardContent className="p-6 text-center">
+              <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-green-400 mb-2">Adventure Complete!</h3>
+              <p className="text-gray-300">
+                Beautiful connection! Come back tomorrow for a new intimate experience 💖
+              </p>
+            </CardContent>
+          </Card>
+        ) : (
+          <Card className="glass-card border-pink-500/30 max-w-md mx-auto">
+            <CardContent className="p-6 text-center">
+              <Heart className="w-12 h-12 text-pink-400 mx-auto mb-4 animate-pulse-slow" />
+              <h3 className="text-xl font-semibold text-pink-400 mb-2">Today's Intimate Challenge</h3>
+              <p className="text-gray-300">
+                Scratch the card below to reveal your passionate physical adventure
+              </p>
+            </CardContent>
+          </Card>
+        )}
       </div>
 
+      {/* Scratch Card */}
       {task && !isCompleted && (
         <ScratchCardComponent 
           task={task} 
@@ -107,13 +142,36 @@ export default function RealDaysPage() {
         />
       )}
 
+      {/* Completed Task Display */}
       {isCompleted && task && (
-        <div className="flex justify-center">
-          <div className="w-80 p-6 bg-gradient-to-br from-pink-500 to-red-500 text-white rounded-lg text-center">
-            <h2 className="text-xl font-bold mb-3">{task.title}</h2>
-            <p className="text-white/90">{task.description}</p>
-            <div className="mt-4 text-green-200">✓ Completed!</div>
-          </div>
+        <div className="flex justify-center animate-float">
+          <Card className="w-full max-w-md glass-card border-pink-500/30 glow-pink">
+            <CardContent className="p-8 text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h2 className="text-2xl font-bold text-pink-400 mb-4">{task.title}</h2>
+              <p className="text-gray-300 leading-relaxed mb-6">{task.description}</p>
+              <div className="flex items-center justify-center gap-2 text-green-400">
+                <CheckCircle className="w-5 h-5" />
+                <span className="font-semibold">Completed Successfully!</span>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Next Task Hint */}
+      {isCompleted && (
+        <div className="text-center mt-12">
+          <Card className="glass-card border-white/10 max-w-sm mx-auto">
+            <CardContent className="p-4 text-center">
+              <Clock className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+              <p className="text-gray-400 text-sm">
+                Your next intimate adventure will be ready tomorrow
+              </p>
+            </CardContent>
+          </Card>
         </div>
       )}
     </div>

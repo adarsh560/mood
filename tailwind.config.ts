@@ -49,6 +49,40 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gradient': 'gradient 8s ease infinite',
+        'shimmer': 'shimmer 2s infinite',
+        'scale-102': 'scale-102 0.2s ease-out',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        'scale-102': {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.02)' },
+        },
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      boxShadow: {
+        'glow-purple': '0 0 20px rgba(147, 51, 234, 0.3)',
+        'glow-pink': '0 0 20px rgba(236, 72, 153, 0.3)',
+        'glow-blue': '0 0 20px rgba(59, 130, 246, 0.3)',
+      },
     },
   },
   plugins: [],
